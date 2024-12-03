@@ -152,3 +152,43 @@
   </div>
 </body>
 </html>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script>
+  $(function () {
+    $('form').on('submit', function (event) {
+      event.preventDefault();
+
+      // 取得所有欄位的值
+      const data = {
+        'entry.123456789': $('#company_name').val().trim(),
+        'entry.987654321': $('#name').val().trim(),
+        'entry.192837465': $('#title').val().trim(),
+        'entry.564738291': $('#email').val().trim(),
+        'entry.847362915': $('#phone').val().trim(),
+        'entry.384756192': $('#website').val().trim(),
+        'entry.293847561': $('#ai_needs').val(),
+        'entry.918273645': $('#details').val().trim(),
+      };
+
+      // 簡單的前端驗證
+      if (!data['entry.123456789'] || !data['entry.987654321'] || !data['entry.192837465'] || !data['entry.564738291'] || !data['entry.847362915']) {
+        alert('請填寫所有必填欄位！');
+        return;
+      }
+
+      // AJAX 提交
+      $.ajax({
+        url: 'https://docs.google.com/forms/d/e/1FAIpQLSccHSRi2sFAaKhRaRYwogfnST130Z5t9b0AXxyquTGdNrOvDA/formResponse',
+        method: 'POST',
+        data: data,
+        success: function () {
+          alert('提交成功！感謝您的填寫。');
+          $('form')[0].reset(); // Reset form after successful submission
+        },
+        error: function () {
+          alert('提交失敗，請稍後再試！');
+        },
+      });
+    });
+  });
+</script>
