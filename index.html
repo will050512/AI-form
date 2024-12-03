@@ -4,9 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>完全客製google表單，美化表單樣式 - August - Let's Write</title>
-  <link rel="canonical" href="https://www.letswrite.tw/custom-google-form/">
-
+  <title>完全客製google表單，美化表單樣式</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
 
   <!-- customized style -->
@@ -61,9 +59,6 @@
     .input-group {
       margin-bottom: 30px;
     }
-    .radio-group label {
-      display: inline-block;
-    }
     textarea {
       min-height: 100px;
     }
@@ -82,28 +77,9 @@
         padding-left: 12px;
       }
     }
-    
-
   </style>
-
-  <link rel="shortcut icon" href="https://letswritetw.github.io/letswritetw/dist/img/logo_512.png"/>
-
-  <!-- Google Tag Manager-->
-  <script>
-    (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-PGQ9WQT');
-  </script>
-
 </head>
 <body>
-
-  <!-- Google Tag Manager (noscript)-->
-  <noscript>
-    <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PGQ9WQT" height="0" width="0" style="display:none;visibility:hidden"></iframe>
-  </noscript>
 
   <div class="container">
     <main class="row">
@@ -112,106 +88,67 @@
       
       <!-- form -->
       <section class="six columns half form">
-        <h1>Contact us</h1>
-        <form>
+        <h1>聯絡我們</h1>
+        <form action="https://docs.google.com/forms/d/e/1FAIpQLSccHSRi2sFAaKhRaRYwogfnST130Z5t9b0AXxyquTGdNrOvDA/formResponse" method="POST">
+          <!-- 公司名稱 -->
+          <div class="input-group">
+            <label for="company_name">公司名稱 *</label>
+            <input class="u-full-width" type="text" name="entry.123456789" id="company_name" required>
+          </div>
+
           <!-- 姓名 -->
           <div class="input-group">
-            <label for="demo_name">姓名</label>
-            <input class="u-full-width" type="text" placeholder="test@mailbox.com" id="demo_name">
+            <label for="name">姓名 *</label>
+            <input class="u-full-width" type="text" name="entry.987654321" id="name" required>
           </div>
 
-          <!-- 性別 -->
+          <!-- 職稱 -->
           <div class="input-group">
-            <label>姓別</label>
-            <div class="radio-group row">
-              <!-- 男性 -->
-              <div class="four columns">
-                <input type="radio" id="male" name="demo_radio" value="male" checked>
-                <label for="male">男性</label>
-              </div>
-
-              <!-- 女性 -->
-              <div class="four columns">
-                <input type="radio" id="female" name="demo_radio" value="female">
-                <label for="female">女性</label>
-              </div>
-
-              <!-- 法人 -->
-              <div class="four columns">
-                <input type="radio" id="legal" name="demo_radio" value="legal">
-                <label for="legal">法人</label>
-              </div>
-            </div>
+            <label for="title">職稱 *</label>
+            <input class="u-full-width" type="text" name="entry.192837465" id="title" required>
           </div>
 
-          <!-- 詢問類別 -->
+          <!-- Email -->
           <div class="input-group">
-            <label for="demo_select">詢問類別</label>
-            <select class="u-full-width" id="demo_select">
-              <option value="0" value="0" selected disabled>請選擇</option>
-              <option value="cat">貓類</option>
-              <option value="dog">狗類</option>
-              <option value="bear">熊類</option>
+            <label for="email">Email *</label>
+            <input class="u-full-width" type="email" name="entry.564738291" id="email" required>
+          </div>
+
+          <!-- 手機號碼 -->
+          <div class="input-group">
+            <label for="phone">手機號碼 *</label>
+            <input class="u-full-width" type="tel" name="entry.847362915" id="phone" required>
+          </div>
+
+          <!-- 公司網址 -->
+          <div class="input-group">
+            <label for="website">公司網址</label>
+            <input class="u-full-width" type="url" name="entry.384756192" id="website">
+          </div>
+
+          <!-- AI 需求 -->
+          <div class="input-group">
+            <label for="ai_needs">AI 需求</label>
+            <select class="u-full-width" name="entry.293847561" id="ai_needs">
+              <option value="對話機器人">對話機器人</option>
+              <option value="文案生成">文案生成</option>
+              <option value="企業知識庫">企業知識庫</option>
+              <option value="語音摘要">語音摘要</option>
+              <option value="圖像識別">圖像識別</option>
+              <option value="其他">其他</option>
             </select>
           </div>
 
-          <!-- 詢問內容 -->
+          <!-- 詳細描述 -->
           <div class="input-group">
-            <label for="demo_textarea">詢問內容</label>
-            <textarea class="u-full-width" id="demo_textarea"></textarea>
+            <label for="details">詳細描述</label>
+            <textarea class="u-full-width" name="entry.918273645" id="details"></textarea>
           </div>
 
-          <button type="button" id="submit" class="button-primary u-full-width">確認送出</button>
-
+          <button type="submit" class="button-primary u-full-width">確認送出</button>
         </form>
       </section>
     </main>
   </div>
-
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-  <script>
-    $(function() {
-      $('#submit').on('click', function() {
-        
-        // 姓名
-        var name = $('#demo_name').val() || '未填寫';
-
-        // 性別
-        var sex = function() {
-          var v;
-          $('[name="demo_radio"]').each(function() {
-            if($(this).prop('checked') === true) v = $(this).val();
-          });
-          return v;
-        };
-
-        // 類別
-        var cat = $('#demo_select').val() || '未填寫';
-
-        // 內容
-        var msg = $('#demo_textarea').val() || '未填寫';
-
-        // post
-        var data = {
-          'entry.248434920': name,
-          'entry.1569038925': sex(),
-          'entry.1509045370': cat,
-          'entry.758411200': msg
-        };
-        $.ajax({
-          type: 'POST',
-          url: 'https://docs.google.com/forms/d/e/1FAIpQLSeTgHEpVpuV_OHakO-25X-O7I4T1tIzIAUqHWLRvUqG9e6TvQ/formResponse',
-          data: data,
-          contentType: 'application/json',
-          dataType: 'jsonp',
-          complete: function() {
-            alert('資料已送出！');
-          }
-        });
-        
-      });
-    });
-  </script>
-  
 </body>
 </html>
