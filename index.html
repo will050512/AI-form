@@ -89,47 +89,46 @@
       <!-- form -->
       <section class="six columns half form">
         <h1>聯絡我們</h1>
-        <form action="https://docs.google.com/forms/d/e/1FAIpQLSccHSRi2sFAaKhRaRYwogfnST130Z5t9b0AXxyquTGdNrOvDA/formResponse" method="POST">
-          <!-- 公司名稱 -->
+        <form action="https://docs.google.com/forms/d/e/1FAIpQLSccHSRi2sFAaKhRaRYwogfnST130Z5t9b0AXxyquTGdNrOvDA/formResponse" method="POST" target="_blank">          <!-- 公司名稱 -->
           <div class="input-group">
             <label for="company_name">公司名稱 *</label>
-            <input class="u-full-width" type="text" name="entry.123456789" id="company_name" required>
+            <input class="u-full-width" type="text" name="entry.1419641448" id="company_name" required>
           </div>
 
           <!-- 姓名 -->
           <div class="input-group">
             <label for="name">姓名 *</label>
-            <input class="u-full-width" type="text" name="entry.987654321" id="name" required>
+            <input class="u-full-width" type="text" name="entry.610192392" id="name" required>
           </div>
 
           <!-- 職稱 -->
           <div class="input-group">
             <label for="title">職稱 *</label>
-            <input class="u-full-width" type="text" name="entry.192837465" id="title" required>
+            <input class="u-full-width" type="text" name="entry.330923427" id="title" required>
           </div>
 
           <!-- Email -->
           <div class="input-group">
             <label for="email">Email *</label>
-            <input class="u-full-width" type="email" name="entry.564738291" id="email" required>
+            <input class="u-full-width" type="email" name="entry.270836823" id="email" required>
           </div>
 
           <!-- 手機號碼 -->
           <div class="input-group">
             <label for="phone">手機號碼 *</label>
-            <input class="u-full-width" type="tel" name="entry.847362915" id="phone" required>
+            <input class="u-full-width" type="tel" name="entry.1150489604" id="phone" required>
           </div>
 
           <!-- 公司網址 -->
           <div class="input-group">
             <label for="website">公司網址</label>
-            <input class="u-full-width" type="url" name="entry.384756192" id="website">
+            <input class="u-full-width" type="url" name="entry.51313535773" id="website">
           </div>
 
           <!-- AI 需求 -->
           <div class="input-group">
             <label for="ai_needs">AI 需求</label>
-            <select class="u-full-width" name="entry.293847561" id="ai_needs">
+            <select class="u-full-width" name="entry.1734801406" id="ai_needs">
               <option value="對話機器人">對話機器人</option>
               <option value="文案生成">文案生成</option>
               <option value="企業知識庫">企業知識庫</option>
@@ -142,7 +141,7 @@
           <!-- 詳細描述 -->
           <div class="input-group">
             <label for="details">詳細描述</label>
-            <textarea class="u-full-width" name="entry.918273645" id="details"></textarea>
+            <textarea class="u-full-width" name="entry.1056456756" id="details"></textarea>
           </div>
 
           <button type="submit" class="button-primary u-full-width">確認送出</button>
@@ -154,41 +153,65 @@
 </html>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
-  $(function () {
-    $('form').on('submit', function (event) {
-      event.preventDefault();
+$(function () {
+  $('form').on('submit', function (event) {
+    event.preventDefault();
 
-      // 取得所有欄位的值
-      const data = {
-        'entry.1419641448': $('#company_name').val().trim(),
-        'entry.610192392': $('#name').val().trim(),
-        'entry.330923427': $('#title').val().trim(),
-        'entry.270836823': $('#email').val().trim(),
-        'entry.1150489604': $('#phone').val().trim(),
-        'entry.51313535773': $('#website').val().trim(),
-        'entry.1734801406': $('#ai_needs').val(),
-        'entry.1056456756': $('#details').val().trim(),
-      };
+    // 取得所有欄位的值，使用 trim() 移除空白
+    const data = {
+      'entry.1419641448': $('#company_name').val().trim() || '未填寫',
+      'entry.610192392': $('#name').val().trim() || '未填寫',
+      'entry.330923427': $('#title').val().trim() || '未填寫',
+      'entry.270836823': $('#email').val().trim() || '未填寫',
+      'entry.1150489604': $('#phone').val().trim() || '未填寫',
+      'entry.51313535773': $('#website').val().trim() || '未填寫',
+      'entry.1734801406': $('#ai_needs').val() || '未填寫',
+      'entry.1056456756': $('#details').val().trim() || '未填寫',
+    };
 
-      // 簡單的前端驗證
-      if (!data['entry.123456789'] || !data['entry.987654321'] || !data['entry.192837465'] || !data['entry.564738291'] || !data['entry.847362915']) {
-        alert('請填寫所有必填欄位！');
-        return;
-      }
+    // 進階驗證：電子郵件格式和必填欄位
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    const requiredFields = [
+      'entry.1419641448', 
+      'entry.610192392', 
+      'entry.330923427', 
+      'entry.270836823', 
+      'entry.1150489604'
+    ];
 
-      // AJAX 提交
-      $.ajax({
-        url: 'https://docs.google.com/forms/d/e/1FAIpQLSccHSRi2sFAaKhRaRYwogfnST130Z5t9b0AXxyquTGdNrOvDA/formResponse',
-        method: 'POST',
-        data: data,
-        success: function () {
-          alert('提交成功！感謝您的填寫。');
-          $('form')[0].reset(); // Reset form after successful submission
-        },
-        error: function () {
-          alert('提交失敗，請稍後再試！');
-        },
-      });
+    // 檢查必填欄位
+    const missingFields = requiredFields.filter(field => !data[field] || data[field] === '未填寫');
+    
+    if (missingFields.length > 0) {
+      alert('請填寫所有必填欄位！');
+      return;
+    }
+
+    // 電子郵件格式驗證
+    if (!emailRegex.test(data['entry.270836823'])) {
+      alert('請輸入有效的電子郵件地址！');
+      return;
+    }
+
+    // 使用 fetch 替代 jQuery AJAX，支援 Promise
+    fetch('https://docs.google.com/forms/d/e/1FAIpQLSccHSRi2sFAaKhRaRYwogfnST130Z5t9b0AXxyquTGdNrOvDA/formResponse', {
+      method: 'POST',
+      mode: 'no-cors', // 解決跨域問題
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+      body: Object.keys(data)
+        .map(key => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
+        .join('&')
+    })
+    .then(() => {
+      alert('提交成功！感謝您的填寫。');
+      $('form')[0].reset(); // 重置表單
+    })
+    .catch(error => {
+      console.error('提交錯誤:', error);
+      alert('提交可能已成功，但系統無法確認。請稍後再試或聯繫技術支援。');
     });
   });
+});
 </script>
